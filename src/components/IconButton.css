@@ -1,0 +1,47 @@
+.IconButton {
+    /* div styled as a button with image on left and text on right */
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    background-color: var(--present-color);
+    gap: 10px;
+
+    box-sizing: border-box;
+    margin: none;
+    padding: none;
+
+    cursor: pointer;
+}
+
+.IconButton:not(.disabled):hover {
+    /* add  a shadow and glow when hovering over the button */
+    background-color: var(--show-color);
+    box-shadow: 0 0 10px 0 var(--attention-color);
+}
+
+.IconButton:not(.disabled):active {
+    /* add a shadow and glow when clicking the button */
+    background-color: var(--attention-color);
+    box-shadow: 0 0 10px 0 var(--show-color);
+}
+
+.icon-button-text {
+
+    /* text is not selectable */
+    user-select: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.disabled {
+    /* visually disable the button */
+    opacity: 0.85;
+    cursor: not-allowed;
+    background-color: var(--disabled-color);
+}

@@ -1,5 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# images
+/src/images/*.jpg
+/src/images/*.png
+/src/images/*.svg
+
 # dependencies
 /node_modules
 /.pnp

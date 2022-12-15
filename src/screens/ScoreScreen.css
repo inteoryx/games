@@ -1,0 +1,50 @@
+.scoreScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: var(--dull-color);
+
+    height: 100%;
+    width: 100%;
+
+    gap: 1em;
+}
+
+.scoreDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 15%;
+}
+
+.scoreDisplayText {
+    color: var(--attention-color);
+    font-size: 5em;
+    font-weight: bold;
+    
+}
+
+.scoreGraphDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 50%;
+}
+
+.scoreButtonArea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 100%;
+    height: 10%;
+}
