@@ -1,4 +1,7 @@
-const playerId = 1234;
+// If playerId is in localStorage, use that. Otherwise, generate a new one.
+const playerId = localStorage.getItem("playerId") || Math.round(Math.random() * 1000000000);
+
+
 const testHistogram = [
     100,
 ];
