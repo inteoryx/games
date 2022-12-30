@@ -23,18 +23,34 @@
 
 .quote {
     height: 30%;
-    width: 100%;
+    width: 90%;
     max-width: 700px;
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
-    color: var(--fore-color);
-    font-size: 2em;
-    font-weight: bold;
     
+}
+
+.quoteText {
+    /* Text area to present quote text. */
+    height: 100%;
+    width: 100%;
+
+    margin: none;
+    padding: none;
+    box-sizing: border-box;
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: var(--dull-color);
+
+    /* Text formatting */
+    font-family: monospace;
+    font-size: 2.5em;
+    color: var(--attention-color);
+
 }
 
 .answerButtons {
@@ -49,4 +65,18 @@
 
     /* even spacing between buttons */
     gap: 10px;
+}
+
+
+@media (min-width: 700px) {
+    .answerButtons {
+        max-width: 1300px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .quote {
+        max-width: 1300px;
+    }
 }

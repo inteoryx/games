@@ -4,11 +4,11 @@ import IconButton from "../components/IconButton";
 import PresImage from "../components/PresImage";
 import Overlay from "../components/Overlay";
 import "./PresidentGameScreen.css";
-import { testPapClient } from "../api/PickAPresidentClient";
+import { testPapClient, papClient } from "../api/PickAPresidentClient";
 
 const images = require.context("../images", true);
 
-const papClient = testPapClient;
+//const papClient = testPapClient;
 const WhoPres = images("./WhosThatPresident.jpg");
 
 const PresidentGameScreen = ({ setScreen }) => {
@@ -22,7 +22,8 @@ const PresidentGameScreen = ({ setScreen }) => {
     const getQuiz = () => {
         papClient.getQuiz(
             (response) => {
-                setQuiz(response);
+                console.log("Got quiz: ", response)
+                setQuiz(response.quiz);
                 setReady(true);
             },
             (error) => {
@@ -39,10 +40,10 @@ const PresidentGameScreen = ({ setScreen }) => {
         }, 1000);
     };
 
-    const answer = (answerId) => {
+    const answer = (ans) => {
         setReady(false);
-        papClient.submitAnswer(
-            quiz.quizId, answerId,
+        papClient.submitGuess(
+            quiz.id, ans,
             (response) => {
                 setAnswerCount(answerCount + 1);
                 if (response.correct) {
@@ -83,18 +84,19 @@ const PresidentGameScreen = ({ setScreen }) => {
                 />
             </div>
             <div className="quote" >
-                <p>{quiz.quote}</p>
+                <textarea className="quoteText" value={quiz.quote} readOnly rows={4} cols={50} />
             </div>
             <div className="answerButtons">
                 {quiz.choices.map((choice) => (
                     <IconButton
-                        key={choice.presidentId}
+                        key={choice.president_id}
                         iconSrc={images('./' + choice.image)}
                         text={choice.name}
                         enabled={ ready }
-                        style={{ height: "20%", width: "90%" }}
                         onClick={() => {
-                            answer(choice.presidentId);
+                            answer(
+                                choice.name
+                            );
                             getQuiz();
                         }}
                     />

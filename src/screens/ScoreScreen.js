@@ -3,13 +3,11 @@ import { useState, useEffect } from "react";
 
 import IconButton from "../components/IconButton";
 import BasicGraph from "../components/BasicGraph";
-import { testPapClient } from "../api/PickAPresidentClient";
+import { papClient } from "../api/PickAPresidentClient";
 
 import "./ScoreScreen.css";
 
 const whoPres = require("../images/WhosThatPresident.jpg");
-const papClient = testPapClient;
-
 
 const ScoreScreen = ({ setScreen }) => {
 

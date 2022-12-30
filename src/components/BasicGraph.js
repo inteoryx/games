@@ -23,7 +23,7 @@ const BasicGraph = ({ data, highlightPosition }) => {
 
             // label should be big bold text
             ctx.font = "bold 14px Arial";
-            ctx.fillText(i, i * rectWidth + rectWidth / 2 + 4, barStart);
+            ctx.fillText(i * 10, i * rectWidth + rectWidth / 2 + 4, barStart);
         }
 
         // draw a red line connecting the top of each bar

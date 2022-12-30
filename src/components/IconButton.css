@@ -9,11 +9,19 @@
     background-color: var(--present-color);
     gap: 10px;
 
+    font-size: 2em;
+    font-family: monospace;
+
     box-sizing: border-box;
     margin: none;
     padding: none;
 
     cursor: pointer;
+
+    height: 100%;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80px;
 }
 
 .IconButton:not(.disabled):hover {
@@ -44,4 +52,13 @@
     opacity: 0.85;
     cursor: not-allowed;
     background-color: var(--disabled-color);
+}
+
+
+@media (min-width: 700px) {
+    .IconButton {
+        /* make the button larger on larger screens */
+        max-width: 700px;
+        max-height: 120px;
+    }
 }

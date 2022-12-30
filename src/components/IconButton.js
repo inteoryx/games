@@ -7,7 +7,7 @@ const IconButton = ({ text, iconSrc, onClick, style, enabled }) => {
     return (
         // If enabled is false, add the "disabled" class to the div
         <div 
-            className={"IconButton" + (enabled ? "" : " disabled")} style={style}
+            className={"IconButton" + (enabled ? "" : " disabled")}
             onClick={ () => { if (enabled) { onClick(); } } }
         >
             <PresImage 

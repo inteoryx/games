@@ -1,4 +1,4 @@
-const playerId = '1234';
+const playerId = 1234;
 const testHistogram = [
     100,
 ];
@@ -25,11 +25,59 @@ const testPresidents = [
         },
 ];
 
-for(let i = 1; i < 100; i++) {
-    testHistogram.push(Math.round(Math.random() * 100));
-}
+const url = "https://nowplayok.com/s";
 
 const papClient = {
+    getQuiz: (success, fail) => {
+        fetch(url + "/getQuiz", {
+            method: "POST",
+            // request is CORS, so we need to specify the origin
+            headers: {
+                "Content-Type": "application/json",
+                "Origin": "http://localhost:3000",
+            },
+            mode: "cors",
+            body: JSON.stringify({
+                player_id: playerId,
+            }),
+        })
+            .then((response) => response.json())
+            .then((json) => success(json))
+            .catch((error) => fail(error));
+    },
+
+    submitGuess: (quizId, answer, success, fail) => {
+        fetch(url + "/submitGuess", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                player_id: playerId,
+                quiz_id: quizId,
+                answer: answer,
+            }),
+        })
+            .then((response) => response.json())
+            .then((json) => success(json))
+            .catch((error) => fail(error));
+    },
+
+    getStats: (success, fail) => {
+        fetch(url + "/getStats", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                player_id: playerId,
+            }),
+        })
+            .then((response) => response.json())
+            .then((json) => success(json))
+            .catch((error) => fail(error));
+    },
+
 
 };
 
@@ -42,7 +90,7 @@ const testPapClient = {
             "quizId": 1,
         }), 1000);
     },
-    submitAnswer: (quizId, answerId, success, fail) => {
+    submitGuess: (quizId, answerId, success, fail) => {
          success({
             "correct": answerId == 45,
         });
