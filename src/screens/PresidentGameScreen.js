@@ -75,7 +75,7 @@ const PresidentGameScreen = ({ setScreen }) => {
 
     return (
         <div className="presidentGameScreen">
-            <Overlay icon={ overlayIcon } alt="Correct answer" visible={ showOverlay } />
+            <Overlay icon={ overlayIcon } alt={ overlayIcon } visible={ showOverlay } heading={answerCount + "/10"} />
             <div className="mysteryPresidentBox">
                 <PresImage
                     src={WhoPres}

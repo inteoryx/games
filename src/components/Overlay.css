@@ -18,6 +18,14 @@
     animation: spin 1s linear infinite;
 }
 
+.overlayText {
+    text-align: center;
+    font-size: 10em;
+    font-weight: boldest;
+    color: var(--fore-color);
+
+}
+
 .hidden {
     display: none;
 }

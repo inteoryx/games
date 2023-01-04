@@ -28,6 +28,7 @@ const testPresidents = [
         },
 ];
 
+//const url = "http://localhost:8000/s";
 const url = "https://nowplayok.com/s";
 
 const papClient = {
@@ -37,7 +38,6 @@ const papClient = {
             // request is CORS, so we need to specify the origin
             headers: {
                 "Content-Type": "application/json",
-                "Origin": "http://localhost:3000",
             },
             mode: "cors",
             body: JSON.stringify({
@@ -80,7 +80,6 @@ const papClient = {
             .then((json) => success(json))
             .catch((error) => fail(error));
     },
-
 
 };
 

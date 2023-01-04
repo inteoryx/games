@@ -12,8 +12,9 @@ const whoPres = require("../images/WhosThatPresident.jpg");
 const ScoreScreen = ({ setScreen }) => {
 
     const [ stats, setStats ] = useState({
+        last_ten: 0,
+        total_correct: 0,
         total: 0,
-        correct: 0,
         rank: 0,
         histogram: [],
         loading: true,
@@ -23,9 +24,9 @@ const ScoreScreen = ({ setScreen }) => {
         papClient.getStats(
             (response) => {
                 setStats({
-                    total: response.total,
-                    correct: response.correct,
-                    rank: response.rank,
+                    last_ten: response.last_ten.correct,
+                    total_correct: response.all_time.correct,
+                    total: response.all_time.correct + response.all_time.incorrect,
                     histogram: response.histogram,
                     loading: false,
                 })
@@ -40,14 +41,14 @@ const ScoreScreen = ({ setScreen }) => {
         <div className="scoreScreen">
             <div className="scoreDisplay">
                 <div className="scoreDisplayText">
-                    { stats.loading ? "Loading..." : stats.correct + "/" + stats.total}
+                    { stats.loading ? "Loading..." : stats.last_ten + "/10" }
                 </div>
             </div>
-            <div className="scoreDisplay">
+            {stats.total > 10 && (<div className="scoreDisplay">
                 <div className="scoreDisplayText">
-                    { stats.loading ? "Loading..." : Math.round(stats.correct / stats.total * 100) + "%"}
+                    { stats.loading ? "Loading..." : "Ever: " + stats.total_correct + "/" + stats.total }
                 </div>
-            </div>
+            </div>)}
             <div className="scoreGraphDisplay">
                 { stats.loading ? "Loading..." :    <BasicGraph 
                     data={stats.histogram}
